@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Welcome')
+@section('title', 'Pokemons list')
 
 @section('main-content')
     <h1>
-        Welcome
+        Pokemons....
     </h1>
 @endsection
