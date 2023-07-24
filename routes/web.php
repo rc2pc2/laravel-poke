@@ -22,3 +22,4 @@ Route::get('/pokemons', [GuestPokemonController::class, 'index'])->name('guest.p
 // Route::resource('admin/pokemons', AdminPokemonController::class);
 
 Route::get('admin/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemons.index');
+Route::get('admin/pokemons/{id}', [AdminPokemonController::class, 'show'])->name('admin.pokemons.show');

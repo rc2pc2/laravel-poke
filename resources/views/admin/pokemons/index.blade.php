@@ -39,7 +39,10 @@
                                 {{ $pokemon->type_two  }}
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary me-2">View</a>
+                                <a class="btn btn-sm btn-primary me-2"
+                                    href="{{ route('admin.pokemons.show', $pokemon->id) }}">
+                                    View
+                                </a>
                                 <a class="btn btn-sm btn-success me-2">Edit</a>
                                 <a class="btn btn-sm btn-warning me-2">Delete</a>
                             </td>
