@@ -14,7 +14,7 @@
                     Homepage
                 </a>
 
-                <a class="nav-link" href="{{ route('guest.pokemon.index') }}">
+                <a class="nav-link" href="{{ route('guest.pokemons.index') }}">
                     Pokemons
                 </a>
             </div>
