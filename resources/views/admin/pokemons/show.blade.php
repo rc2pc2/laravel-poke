@@ -13,11 +13,15 @@
     </div>
     <div class="row pokemons justify-content-around">
         <article class="card col-12 p-0 m-3">
+
             <img src="{{ $pokemon->image }}" class="card-img-top w-25" alt="...">
             <div class="card-body">
                 <h5 class="card-title">
                     {{ $pokemon->name  }}
                 </h5>
+                <h6>
+                    ID : {{ $pokemon->id }}
+                </h6>
                 <p class="card-text">
                     This pokemon has poke index: {{ $pokemon->poke_index }}
                 </p>
