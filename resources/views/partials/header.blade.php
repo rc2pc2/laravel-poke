@@ -10,11 +10,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav w-100">
-                <a class="nav-link" aria-current="page" href="{{ route('guest.home') }}">
+                <a class="nav-link {{ (Route::currentRouteName() == 'guest.home') ? 'active': ''}}" aria-current="page" href="{{ route('guest.home') }}" >
                     Homepage
                 </a>
 
-                <a class="nav-link" href="{{ route('admin.pokemons.index') }}">
+                <a class="nav-link {{ (Route::currentRouteName() == 'admin.pokemons.index') ? 'active': ''}}" href="{{ route('admin.pokemons.index') }}">
                     Pokemons
                 </a>
 
