@@ -46,11 +46,12 @@ class PokemonController extends Controller
         $newPokemon = new Pokemon();
 
         // # popolo il nuovo modello
-        $newPokemon->name = $data['name'];
-        $newPokemon->type_one = $data['type_one'];
-        $newPokemon->type_two = $data['type_two'];
-        $newPokemon->poke_index = $data['poke_index'];
-        $newPokemon->image = $data['image'];
+        // $newPokemon->name = $data['name'];
+        // $newPokemon->type_one = $data['type_one'];
+        // $newPokemon->type_two = $data['type_two'];
+        // $newPokemon->poke_index = $data['poke_index'];
+        // $newPokemon->image = $data['image'];
+        $newPokemon->fill($data);
 
         // # lo salvo nel db
         $newPokemon->save();
