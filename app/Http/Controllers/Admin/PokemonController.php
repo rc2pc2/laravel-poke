@@ -26,7 +26,7 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pokemons.create');
     }
 
     /**
@@ -37,7 +37,26 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ? prendo i valori
+        $data = $request->all();
+        // dd($data);
+
+        // ? li inserisco nel db
+        // # creo un'istanza del nuovo modello
+        $newPokemon = new Pokemon();
+
+        // # popolo il nuovo modello
+        $newPokemon->name = $data['name'];
+        $newPokemon->type_one = $data['type_one'];
+        $newPokemon->type_two = $data['type_two'];
+        $newPokemon->poke_index = $data['poke_index'];
+        $newPokemon->image = $data['image'];
+
+        // # lo salvo nel db
+        $newPokemon->save();
+
+        // ? reindirizziamo l'utente in un'altra pagina
+        return redirect()->route('admin.pokemons.show', $newPokemon->id);
     }
 
     /**

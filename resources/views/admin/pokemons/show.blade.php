@@ -11,8 +11,8 @@
             </h1>
         </div>
     </div>
-    <div class="row pokemons justify-content-around">
-        <article class="card col-12 p-0 m-3">
+    <div class="row pokemons justify-content-center">
+        <article class="card col-6 p-0 m-3">
 
             <img src="{{ $pokemon->image }}" class="card-img-top w-25" alt="...">
             <div class="card-body">

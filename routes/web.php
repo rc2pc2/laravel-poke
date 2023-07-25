@@ -19,7 +19,15 @@ use App\Http\Controllers\Admin\PokemonController as AdminPokemonController;
 
 Route::get('/', [GuestPageController::class, 'home'])->name('guest.home');
 Route::get('/pokemons', [GuestPokemonController::class, 'index'])->name('guest.pokemons.index');
-// Route::resource('admin/pokemons', AdminPokemonController::class);
 
-Route::get('admin/pokemons', [AdminPokemonController::class, 'index'])->name('admin.pokemons.index');
-Route::get('admin/pokemons/{id}', [AdminPokemonController::class, 'show'])->name('admin.pokemons.show');
+Route::name('admin.')->prefix('admin')->group( function(){
+        // Route::resource('/pokemons', AdminPokemonController::class);
+        Route::get('/pokemons', [AdminPokemonController::class, 'index'])->name('pokemons.index');
+        Route::get('/pokemons/create', [AdminPokemonController::class, 'create'])->name('pokemons.create');
+        Route::post('/pokemons', [AdminPokemonController::class, 'store'])->name('pokemons.store');
+        Route::get('/pokemons/{id}', [AdminPokemonController::class, 'show'])->name('pokemons.show');
+    }
+);
+
+
+

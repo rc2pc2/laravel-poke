@@ -9,13 +9,17 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
+            <div class="navbar-nav w-100">
                 <a class="nav-link" aria-current="page" href="{{ route('guest.home') }}">
                     Homepage
                 </a>
 
-                <a class="nav-link" href="{{ route('guest.pokemons.index') }}">
+                <a class="nav-link" href="{{ route('admin.pokemons.index') }}">
                     Pokemons
+                </a>
+
+                <a class="nav-link ms-auto" href="{{ route('admin.pokemons.create') }}">
+                    Create a new pokemon
                 </a>
             </div>
             </div>
