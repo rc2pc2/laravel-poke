@@ -15,7 +15,7 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        $pokemonList = Pokemon::paginate(10);
+        $pokemonList = Pokemon::paginate(8);
         return view('admin.pokemons.index', compact('pokemonList'));
     }
 
@@ -45,12 +45,13 @@ class PokemonController extends Controller
         // # creo un'istanza del nuovo modello
         $newPokemon = new Pokemon();
 
-        // # popolo il nuovo modello
+        // # popolo il nuovo modello manualmente
         // $newPokemon->name = $data['name'];
         // $newPokemon->type_one = $data['type_one'];
         // $newPokemon->type_two = $data['type_two'];
         // $newPokemon->poke_index = $data['poke_index'];
         // $newPokemon->image = $data['image'];
+
         $newPokemon->fill($data);
 
         // # lo salvo nel db

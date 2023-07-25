@@ -20,6 +20,7 @@
                         <th scope="col">Name</th>
                         <th scope="col">First type</th>
                         <th scope="col">Second type</th>
+                        <th scope="col">Poke index</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -37,6 +38,9 @@
                             </td>
                             <td>
                                 {{ $pokemon->type_two  }}
+                            </td>
+                            <td>
+                                {{ $pokemon->poke_index  }}
                             </td>
                             <td>
                                 <a class="btn btn-sm btn-primary me-2"

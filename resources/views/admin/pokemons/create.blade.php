@@ -12,7 +12,8 @@
         </div>
 
         <form class="col-8" action="{{ route('admin.pokemons.store') }}" method="POST">
-        @csrf
+            @csrf
+
             <div class="mb-3">
                 <label for="name" class="form-label">
                     Name
