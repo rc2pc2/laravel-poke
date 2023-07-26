@@ -60,7 +60,7 @@ class PokemonController extends Controller
         $newPokemon->save();
 
         // ? reindirizziamo l'utente in un'altra pagina
-        return redirect()->route('admin.pokemons.show', $newPokemon->id);
+        return redirect()->route('admin.pokemons.index')->with('created', $newPokemon->name);
     }
 
     /**
@@ -111,7 +111,7 @@ class PokemonController extends Controller
 
         $pokemon->update($data);
 
-        return redirect()->route('admin.pokemons.show', $pokemon->id);
+        return redirect()->route('admin.pokemons.show', $pokemon->id)->with('updated', $pokemon->name);
     }
 
     /**
@@ -122,6 +122,11 @@ class PokemonController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pokemon = Pokemon::findOrFail($id);
+        // dd($pokemon, $id);
+
+        $pokemon->delete();
+
+        return redirect()->route('admin.pokemons.index')->with('delete', $pokemon->name);
     }
 }

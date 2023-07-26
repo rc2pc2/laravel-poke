@@ -12,6 +12,14 @@
         </div>
     </div>
     <div class="row pokemons justify-content-center">
+        @if (session('updated'))
+            <div class="col-12">
+                <div class="alert alert-success">
+                    {{ session('updated') }} has been updated succesfully
+                </div>
+            </div>
+        @endif
+
         <article class="card col-6 p-0 m-3">
 
             <img src="{{ $pokemon->image }}" class="card-img-top w-25" alt="...">
@@ -39,6 +47,14 @@
                 href="{{ route('admin.pokemons.edit', $pokemon->id) }}">
                     Edit
                 </a>
+                <form action="{{ route('admin.pokemons.destroy', $pokemon->id) }}" class="d-inline" method="POST">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-sm btn-warning me-2">
+                        Delete
+                    </button>
+                </form>
             </div>
         </article>
     </div>
