@@ -21,14 +21,17 @@ Route::get('/', [GuestPageController::class, 'home'])->name('guest.home');
 Route::get('/pokemons', [GuestPokemonController::class, 'index'])->name('guest.pokemons.index');
 
 Route::name('admin.')->prefix('admin')->group( function(){
-        Route::resource('/pokemons', AdminPokemonController::class);
-        // Route::get('/pokemons',                 [AdminPokemonController::class, 'index'])->name('pokemons.index');
-        // Route::get('/pokemons/create',          [AdminPokemonController::class, 'create'])->name('pokemons.create');
-        // Route::post('/pokemons',                [AdminPokemonController::class, 'store'])->name('pokemons.store');
-        // Route::get('/pokemons/{id}',            [AdminPokemonController::class, 'show'])->name('pokemons.show');
-        // Route::get('/pokemons/{id}/edit',       [AdminPokemonController::class, 'edit'])->name('pokemons.edit');
-        // Route::put('/pokemons/{id}',            [AdminPokemonController::class, 'update'])->name('pokemons.update');
-        // Route::delete('/pokemons/{id}',         [AdminPokemonController::class, 'destroy'])->name('pokemons.destroy');
+    Route::get('/pokemons/deleted',            [AdminPokemonController::class, 'trashed'])->name('pokemons.trashed');
+    Route::delete('/pokemons/deleted/{id}', [AdminPokemonController::class, 'restore'])->name('pokemons.restore');
+    Route::resource('/pokemons', AdminPokemonController::class);
+    // Route::get('/pokemons',                 [AdminPokemonController::class, 'index'])->name('pokemons.index');
+    // Route::get('/pokemons/create',          [AdminPokemonController::class, 'create'])->name('pokemons.create');
+    // Route::post('/pokemons',                [AdminPokemonController::class, 'store'])->name('pokemons.store');
+    // Route::get('/pokemons/{id}',            [AdminPokemonController::class, 'show'])->name('pokemons.show');
+    // Route::get('/pokemons/{id}/edit',       [AdminPokemonController::class, 'edit'])->name('pokemons.edit');
+    // Route::put('/pokemons/{id}',            [AdminPokemonController::class, 'update'])->name('pokemons.update');
+    // Route::delete('/pokemons/{id}',         [AdminPokemonController::class, 'destroy'])->name('pokemons.destroy');
+
     }
 );
 

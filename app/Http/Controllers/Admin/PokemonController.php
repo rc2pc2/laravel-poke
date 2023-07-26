@@ -129,4 +129,16 @@ class PokemonController extends Controller
 
         return redirect()->route('admin.pokemons.index')->with('delete', $pokemon->name);
     }
+
+    public function trashed(){
+        $pokemonList = Pokemon::onlyTrashed()->paginate(10);
+        return view('admin.pokemons.trashed', compact('pokemonList'));
+    }
+
+    public function restore(Int $id){
+        $pokemon = Pokemon::withTrashed()->findOrFail($id);
+        // dd($pokemon);
+        $pokemon->restore();
+        return redirect()->route('admin.pokemons.index')->with('restored', $pokemon->name);
+    }
 }

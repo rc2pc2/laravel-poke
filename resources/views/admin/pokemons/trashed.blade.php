@@ -24,12 +24,6 @@
                     {{ session('created') }} has been created succesfully
                 </div>
             </div>
-        @elseif ( session('restored'))
-            <div class="col-12">
-                <div class="alert alert-primary">
-                    {{ session('restored') }} has been restored succesfully
-                </div>
-            </div>
         @endif
         <div class="col-12">
             <table class="table table-striped table-hover text-center table-bordered">
@@ -62,20 +56,12 @@
                                 {{ $pokemon->poke_index  }}
                             </td>
                             <td>
-                                <a class="btn btn-sm btn-primary me-2"
-                                    href="{{ route('admin.pokemons.show', $pokemon->id) }}">
-                                    View
-                                </a>
-                                <a class="btn btn-sm btn-success me-2"
-                                    href="{{ route('admin.pokemons.edit', $pokemon->id) }}">
-                                    Edit
-                                </a>
-                                <form action="{{ route('admin.pokemons.destroy', $pokemon->id) }}" class="d-inline form-terminator" method="POST">
+                                <form action="{{ route('admin.pokemons.restore', $pokemon->id) }}" class="d-inline form-terminator" method="POST">
                                     @csrf
                                     @method('DELETE')
 
                                     <button type="submit" class="btn btn-sm btn-warning me-2">
-                                        Delete
+                                        Restore
                                     </button>
                                 </form>
                             </td>
