@@ -26,7 +26,9 @@ class PokemonController extends Controller
      */
     public function create()
     {
-        return view('admin.pokemons.create');
+        $pokemonTypes = ['pshychic', 'flight', 'water', 'fire', 'grass', 'ice', 'ground', 'rock', 'dragon', 'fairy', 'ghost', 'dark', 'steel', 'fighting', 'normal', 'electric', 'poison', 'bug'];
+
+        return view('admin.pokemons.create', compact("pokemonTypes"));
     }
 
     /**
@@ -81,8 +83,10 @@ class PokemonController extends Controller
      */
     public function edit($id)
     {
+        $pokemonTypes = ['pshychic', 'flight', 'water', 'fire', 'grass', 'ice', 'ground', 'rock', 'dragon', 'fairy', 'ghost', 'dark', 'steel', 'fighting', 'normal', 'electric', 'poison', 'bug'];
+
         $pokemon = Pokemon::findOrFail($id);
-        return view('admin.pokemons.edit', compact('pokemon'));
+        return view('admin.pokemons.edit', compact('pokemon', "pokemonTypes"));
     }
 
     /**

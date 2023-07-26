@@ -18,31 +18,42 @@
                 <label for="name" class="form-label">
                     Name
                 </label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" required>
             </div>
             <div class="mb-3">
                 <label for="type_one" class="form-label">
                     First type
                 </label>
-                <input type="text" class="form-control" id="type_one" name="type_one">
+
+                <select class="form-select" id="type_one" name="type_one"  required>
+                    @foreach ($pokemonTypes as $type )
+                        <option value="{{ $type }}">{{ ucwords($type) }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="type_two" class="form-label">
                     Second type
                 </label>
-                <input type="text" class="form-control" id="type_two" name="type_two">
+
+                <select class="form-select" id="type_two" name="type_two">
+                    <option value=""></option>
+                    @foreach ($pokemonTypes as $type )
+                        <option value="{{ $type }}">{{ ucwords($type) }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="poke_index" class="form-label">
                     Poke index
                 </label>
-                <input type="number" class="form-control" id="poke_index" name="poke_index">
+                <input type="number" class="form-control" id="poke_index" name="poke_index"  required>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">
                     Image url
                 </label>
-                <input type="text" class="form-control" id="image" name="image">
+                <input type="text" class="form-control" id="image" name="image" required>
             </div>
 
 

@@ -29,13 +29,24 @@
                 <label for="type_one" class="form-label">
                     First type
                 </label>
-                <input type="text" class="form-control" id="type_one" name="type_one" value="{{ $pokemon->type_one }}">
+
+                <select class="form-select" id="type_one" name="type_one"  required>
+                    @foreach ($pokemonTypes as $type )
+                        <option value="{{ $type }}" {{($type == $pokemon->type_one) ? 'selected' : '' }}>{{ ucwords($type) }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="type_two" class="form-label">
                     Second type
                 </label>
-                <input type="text" class="form-control" id="type_two" name="type_two" value="{{ $pokemon->type_two }}">
+
+                <select class="form-select" id="type_two" name="type_two">
+                    <option value=""></option>
+                    @foreach ($pokemonTypes as $type )
+                        <option value="{{ $type }}" {{($type == $pokemon->type_two) ? 'selected' : '' }}>{{ ucwords($type) }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="mb-3">
                 <label for="poke_index" class="form-label">
