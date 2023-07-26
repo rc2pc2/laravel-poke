@@ -47,7 +47,9 @@
                                     href="{{ route('admin.pokemons.show', $pokemon->id) }}">
                                     View
                                 </a>
-                                <a class="btn btn-sm btn-success me-2">Edit</a>
+                                <a class="btn btn-sm btn-success me-2"
+                                    href="{{ route('admin.pokemons.edit', $pokemon->id) }}">
+                                Edit</a>
                                 <a class="btn btn-sm btn-warning me-2">Delete</a>
                             </td>
 

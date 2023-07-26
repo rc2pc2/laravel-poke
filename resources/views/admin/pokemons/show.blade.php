@@ -34,6 +34,12 @@
                     {{ $pokemon->type_two  }}
                 </li>
             </ul>
+            <div class="text-center">
+                <a class="btn btn-sm btn-success m-3"
+                href="{{ route('admin.pokemons.edit', $pokemon->id) }}">
+                    Edit
+                </a>
+            </div>
         </article>
     </div>
 </div>
