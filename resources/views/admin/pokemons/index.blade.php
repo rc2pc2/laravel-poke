@@ -64,7 +64,7 @@
                                     href="{{ route('admin.pokemons.edit', $pokemon->id) }}">
                                     Edit
                                 </a>
-                                <form action="{{ route('admin.pokemons.destroy', $pokemon->id) }}" class="d-inline" method="POST">
+                                <form action="{{ route('admin.pokemons.destroy', $pokemon->id) }}" class="d-inline form-terminator" method="POST">
                                     @csrf
                                     @method('DELETE')
 
@@ -84,7 +84,26 @@
     {!! $pokemonList->links() !!}
 
 </div>
+@endsection
 
 
 
+@section('custom-scripts-tail')
+    <script>
+        // intercettare un evento
+        // individuare l'elemento che faccia triggerare il nostro evento
+        // bloccare il comportamento naturale del nostro bottone/form
+        // chiedere all'utente cosa vuole fare
+        // se l'utente conferma allora cancellare, altrimenti non fare nulla
+        const deleteFormElements = document.querySelectorAll('form.form-terminator');
+        deleteFormElements.forEach(formElement => {
+            formElement.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const userConfirm = window.confirm('Are you sure you want to delete this pokemon?');
+                if (userConfirm){
+                    this.submit();
+                }
+            });
+        });
+    </script>
 @endsection

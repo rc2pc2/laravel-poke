@@ -47,7 +47,7 @@
                 href="{{ route('admin.pokemons.edit', $pokemon->id) }}">
                     Edit
                 </a>
-                <form action="{{ route('admin.pokemons.destroy', $pokemon->id) }}" class="d-inline" method="POST">
+                <form action="{{ route('admin.pokemons.destroy', $pokemon->id) }}" class="d-inline form-terminator" method="POST">
                     @csrf
                     @method('DELETE')
 
@@ -59,5 +59,18 @@
         </article>
     </div>
 </div>
+@endsection
 
+@section('custom-scripts-tail')
+    <script>
+        const deleteFormElement = document.querySelector('form.form-terminator');
+
+        deleteFormElement.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userConfirm = window.confirm('Are you sure you want to delete this pokemon?');
+            if (userConfirm){
+                this.submit();
+            }
+        });
+    </script>
 @endsection
