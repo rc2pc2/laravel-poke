@@ -81,7 +81,8 @@ class PokemonController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pokemon = Pokemon::findOrFail($id);
+        return view('admin.pokemons.edit', compact('pokemon'));
     }
 
     /**
@@ -91,9 +92,22 @@ class PokemonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Int $id)
     {
-        //
+        $data = $request->all();
+
+        $pokemon = Pokemon::findOrFail($id);
+
+        // $pokemon->name = $data["name"];
+        // $pokemon->type_one = $data['type_one'];
+        // $pokemon->type_two = $data['type_two'];
+        // $pokemon->poke_index = $data['poke_index'];
+        // $pokemon->image = $data['image'];
+        // $pokemon->save();
+
+        $pokemon->update($data);
+
+        return redirect()->route('admin.pokemons.show', $pokemon->id);
     }
 
     /**

@@ -22,10 +22,12 @@ Route::get('/pokemons', [GuestPokemonController::class, 'index'])->name('guest.p
 
 Route::name('admin.')->prefix('admin')->group( function(){
         // Route::resource('/pokemons', AdminPokemonController::class);
-        Route::get('/pokemons',         [AdminPokemonController::class, 'index'])->name('pokemons.index');
-        Route::get('/pokemons/create',  [AdminPokemonController::class, 'create'])->name('pokemons.create');
-        Route::post('/pokemons',        [AdminPokemonController::class, 'store'])->name('pokemons.store');
-        Route::get('/pokemons/{id}',    [AdminPokemonController::class, 'show'])->name('pokemons.show');
+        Route::get('/pokemons',             [AdminPokemonController::class, 'index'])->name('pokemons.index');
+        Route::get('/pokemons/create',      [AdminPokemonController::class, 'create'])->name('pokemons.create');
+        Route::post('/pokemons',            [AdminPokemonController::class, 'store'])->name('pokemons.store');
+        Route::get('/pokemons/{id}',        [AdminPokemonController::class, 'show'])->name('pokemons.show');
+        Route::get('/pokemons/{id}/edit',   [AdminPokemonController::class, 'edit'])->name('pokemons.edit');
+        Route::put('/pokemons/{id}',        [AdminPokemonController::class, 'update'])->name('pokemons.update');
     }
 );
 
