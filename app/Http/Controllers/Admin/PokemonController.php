@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Pokemon;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PokemonController extends Controller
 {
@@ -39,7 +40,18 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
+        $pokemonTypes = ['pshychic', 'flight', 'water', 'fire', 'grass', 'ice', 'ground', 'rock', 'dragon', 'fairy', 'ghost', 'dark', 'steel', 'fighting', 'normal', 'electric', 'poison', 'bug'];
+
+        $request['pokemonTypes'] = $pokemonTypes;
+
+        $data = $request->validate([
+            'name' => 'required|unique:pokemons|max:255|min:3',
+            'type_one' => 'required|in_array:pokemonTypes.*',
+            'type_two' => 'in_array:pokemonTypes.*|different:type_one',
+            'poke_index' => 'required|integer|gt:0|unique:pokemons',
+            'image' => 'required|url|string'
+        ]);
+
         $newPokemon = new Pokemon();
 
         $newPokemon->fill($data);
@@ -82,7 +94,17 @@ class PokemonController extends Controller
      */
     public function update(Request $request, Int $id)
     {
-        $data = $request->all();
+        $pokemonTypes = ['pshychic', 'flight', 'water', 'fire', 'grass', 'ice', 'ground', 'rock', 'dragon', 'fairy', 'ghost', 'dark', 'steel', 'fighting', 'normal', 'electric', 'poison', 'bug'];
+
+        $request['pokemonTypes'] = $pokemonTypes;
+
+        $data = $request->validate([
+            'name' => ["required", "min:3", "max:255", Rule::unique('pokemons')->ignore($id)],
+            'type_one' => 'required|in_array:pokemonTypes.*',
+            'type_two' => 'in_array:pokemonTypes.*|different:type_one',
+            'poke_index' => ['required', 'integer', 'gt:0', Rule::unique('pokemons')->ignore($id)] ,
+            'image' => 'required|url|string'
+        ]);
 
         $pokemon = Pokemon::findOrFail($id);
 
