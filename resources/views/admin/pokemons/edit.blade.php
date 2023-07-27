@@ -32,6 +32,7 @@
             @csrf
             @method('PUT')
 
+            <input type="hidden" name="id" value="{{ $pokemon->id }}">
             <div class="mb-3">
                 <label for="name" class="form-label">
                     Name
