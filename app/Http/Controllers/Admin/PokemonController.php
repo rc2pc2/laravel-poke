@@ -50,7 +50,10 @@ class PokemonController extends Controller
             'type_two' => 'in_array:pokemonTypes.*|different:type_one',
             'poke_index' => 'required|integer|gt:0|unique:pokemons',
             'image' => 'required|url|string'
-        ]);
+        ],
+        [
+            'name.required' => 'You cannot create a pokemon without a name'  ]
+        );
 
         $newPokemon = new Pokemon();
 

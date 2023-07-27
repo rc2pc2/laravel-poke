@@ -36,7 +36,7 @@
                 <label for="name" class="form-label">
                     Name
                 </label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $pokemon->name) }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $pokemon->name) }}" required>
             </div>
             <div class="mb-3">
                 <label for="type_one" class="form-label">
@@ -54,7 +54,7 @@
                     Second type
                 </label>
 
-                <select class="form-select" id="type_two" name="type_two">
+                <select class="form-select" id="type_two" name="type_two" >
                     <option value=""></option>
                     @foreach ($pokemonTypes as $type )
                         <option value="{{ $type }}" {{old('type_one', $pokemon->type_two) ? 'selected' : '' }}>{{ ucwords($type) }}</option>
@@ -65,13 +65,13 @@
                 <label for="poke_index" class="form-label">
                     Poke index
                 </label>
-                <input type="number" class="form-control" id="poke_index" name="poke_index"  value="{{ old('poke_index', $pokemon->poke_index) }}">
+                <input type="number" class="form-control" id="poke_index" name="poke_index"  value="{{ old('poke_index', $pokemon->poke_index) }}" required>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">
                     Image url
                 </label>
-                <input type="text" class="form-control" id="image" name="image"  value="{{ old('image', $pokemon->image) }}">
+                <input type="text" class="form-control" id="image" name="image"  value="{{ old('image', $pokemon->image) }}" required>
 
             </div>
 
