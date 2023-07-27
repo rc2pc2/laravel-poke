@@ -39,27 +39,11 @@ class PokemonController extends Controller
      */
     public function store(Request $request)
     {
-        // ? prendo i valori
         $data = $request->all();
-        // dd($data);
-
-        // ? li inserisco nel db
-        // # creo un'istanza del nuovo modello
         $newPokemon = new Pokemon();
 
-        // # popolo il nuovo modello manualmente
-        // $newPokemon->name = $data['name'];
-        // $newPokemon->type_one = $data['type_one'];
-        // $newPokemon->type_two = $data['type_two'];
-        // $newPokemon->poke_index = $data['poke_index'];
-        // $newPokemon->image = $data['image'];
-
         $newPokemon->fill($data);
-
-        // # lo salvo nel db
         $newPokemon->save();
-
-        // ? reindirizziamo l'utente in un'altra pagina
         return redirect()->route('admin.pokemons.index')->with('created', $newPokemon->name);
     }
 
@@ -69,7 +53,7 @@ class PokemonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Int $id)
     {
         $pokemon = Pokemon::findOrFail($id);
         return view('admin.pokemons.show', compact('pokemon'));
@@ -81,7 +65,7 @@ class PokemonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Int $id)
     {
         $pokemonTypes = ['pshychic', 'flight', 'water', 'fire', 'grass', 'ice', 'ground', 'rock', 'dragon', 'fairy', 'ghost', 'dark', 'steel', 'fighting', 'normal', 'electric', 'poison', 'bug'];
 
@@ -120,24 +104,24 @@ class PokemonController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Int $id)
     {
         $pokemon = Pokemon::findOrFail($id);
-        // dd($pokemon, $id);
 
         $pokemon->delete();
 
         return redirect()->route('admin.pokemons.index')->with('delete', $pokemon->name);
     }
 
+
     public function trashed(){
         $pokemonList = Pokemon::onlyTrashed()->paginate(10);
         return view('admin.pokemons.trashed', compact('pokemonList'));
     }
 
+
     public function restore(Int $id){
         $pokemon = Pokemon::withTrashed()->findOrFail($id);
-        // dd($pokemon);
         $pokemon->restore();
         return redirect()->route('admin.pokemons.index')->with('restored', $pokemon->name);
     }
